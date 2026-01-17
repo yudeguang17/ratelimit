@@ -1,8 +1,8 @@
-// Copyright 2020 ratelimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 ratelimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 package ratelimit
 
 import (
@@ -19,14 +19,14 @@ func int64ToIp4String(ip int64) string {
 	return fmt.Sprintf("%d.%d.%d.%d", byte(ip>>24), byte(ip>>16), byte(ip>>8), byte(ip))
 }
 
-//IP4地址转换为Int64，方便存储时，减少内存占用，提升性能
+// IP4地址转换为Int64，方便存储时，减少内存占用，提升性能
 func ip4StringToInt64(ip string) int64 {
 	ret := big.NewInt(0)
 	ret.SetBytes(net.ParseIP(ip).To4())
 	return ret.Int64()
 }
 
-//判断是否是IP地址，同时支持IP4,IP6
+// 判断是否是IP地址，同时支持IP4,IP6
 func IsIP(ip string) bool {
 	address := net.ParseIP(ip)
 	if address == nil {

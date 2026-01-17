@@ -1,8 +1,8 @@
-// Copyright 2020 rateLimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 rateLimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 
 package ratelimit
 

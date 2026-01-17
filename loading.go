@@ -1,20 +1,20 @@
-// Copyright 2020 rateLimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 rateLimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 
 package ratelimit
 
 import (
 	"fmt"
-	"github.com/yudeguang/iox"
+	"github.com/yudeguang17/iox"
 	"io/ioutil"
 	"strconv"
 	"time"
 )
 
-//从本地磁盘加载历史数据
+// 从本地磁盘加载历史数据
 func (r *Rule) loading() (err error) {
 	var errFileDifferent = fmt.Errorf("backup rules is inconsistent with current rules")
 	b, err := ioutil.ReadFile(r.backupFileName + ".ratelimit")

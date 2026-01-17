@@ -1,8 +1,8 @@
-// Copyright 2020 rateLimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 rateLimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 package ratelimit
 
 import (
@@ -15,7 +15,7 @@ import (
 用环形队列做为底层数据结构来存储用户访问数据,暂时废弃,实际使用自动扩容环形队列代替
 */
 
-//使用切片实现的队列
+// 使用切片实现的队列
 type circleQueueInt64 struct {
 	key interface{}
 	//注意，maxSize及visitorRecord长度都比实际存储长度大1
@@ -29,7 +29,7 @@ type circleQueueInt64 struct {
 	locker      *sync.Mutex
 }
 
-//初始化环形队列
+// 初始化环形队列
 func newCircleQueueInt64(size int) *circleQueueInt64 {
 	var c circleQueueInt64
 	c.maxSize = size + 1
@@ -38,7 +38,7 @@ func newCircleQueueInt64(size int) *circleQueueInt64 {
 	return &c
 }
 
-//入对列
+// 入对列
 func (q *circleQueueInt64) push(val int64) (err error) {
 	q.locker.Lock()
 	defer q.locker.Unlock()
@@ -50,7 +50,7 @@ func (q *circleQueueInt64) push(val int64) (err error) {
 	return
 }
 
-//出对列
+// 出对列
 func (q *circleQueueInt64) pop() (val int64, err error) {
 	q.locker.Lock()
 	defer q.locker.Unlock()
@@ -62,7 +62,7 @@ func (q *circleQueueInt64) pop() (val int64, err error) {
 	return
 }
 
-//出对列
+// 出对列
 func (q *circleQueueInt64) popForCopy() (val int64, err error) {
 	q.locker.Lock()
 	defer q.locker.Unlock()
@@ -74,42 +74,42 @@ func (q *circleQueueInt64) popForCopy() (val int64, err error) {
 	return
 }
 
-//判断队列是否已满
+// 判断队列是否已满
 func (q *circleQueueInt64) isFull() bool {
 	return (q.tail+1)%q.maxSize == q.head
 }
 
-//判断队列是否为空
+// 判断队列是否为空
 func (q *circleQueueInt64) isEmpty() bool {
 	return q.tail == q.head
 }
 
-//判断队列是否为空
+// 判断队列是否为空
 func (q *circleQueueInt64) isEmptyForCopy() bool {
 	return q.tailForCopy == q.headForCopy
 }
 
-//判断已使用多少个元素
+// 判断已使用多少个元素
 func (q *circleQueueInt64) usedSizeForCopy() int {
 	return (q.tailForCopy + q.maxSize - q.headForCopy) % q.maxSize
 }
 
-//判断已使用多少个元素
+// 判断已使用多少个元素
 func (q *circleQueueInt64) usedSize() int {
 	return (q.tail + q.maxSize - q.head) % q.maxSize
 }
 
-//判断队列中还有多少空间未使用
+// 判断队列中还有多少空间未使用
 func (q *circleQueueInt64) unUsedSize() int {
 	return q.maxSize - 1 - q.usedSize()
 }
 
-//队列总的可用空间长度
+// 队列总的可用空间长度
 func (q *circleQueueInt64) Len() int {
 	return q.maxSize - 1
 }
 
-//删除过期数据
+// 删除过期数据
 func (q *circleQueueInt64) ueleteExpired(key interface{}) {
 	if q.key != key {
 		return

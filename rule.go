@@ -1,8 +1,8 @@
-// Copyright 2020 rateLimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 rateLimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 package ratelimit
 
 import (
@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-//用户访问控制策略,可由一个或多个访问控制规则组成
+// 用户访问控制策略,可由一个或多个访问控制规则组成
 type Rule struct {
 	rules []*singleRule
 	//以下用于备份数据，在需要备份时才在作用

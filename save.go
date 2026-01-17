@@ -1,8 +1,8 @@
-// Copyright 2020 rateLimit Author(https://github.com/yudeguang/ratelimit). All Rights Reserved.
+// Copyright 2020 rateLimit Author(https://github.com/yudeguang17/ratelimit). All Rights Reserved.
 //
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/yudeguang/ratelimit.
+// You can obtain one at https://github.com/yudeguang17/ratelimit.
 
 package ratelimit
 
@@ -18,7 +18,7 @@ import (
 	"time"
 )
 
-//如果有历史备份文件，则加载，无历史备份文件则后续自动生成，并且开启自动保存，默认60秒完成一次存盘
+// 如果有历史备份文件，则加载，无历史备份文件则后续自动生成，并且开启自动保存，默认60秒完成一次存盘
 func (r *Rule) LoadingAndAutoSaveToDisc(backupFileName string, backUpInterval ...time.Duration) {
 	r.loadBackupFileOnce.Do(func() {
 		r.lockerForBackup = new(sync.Mutex)
@@ -57,7 +57,7 @@ func (r *Rule) LoadingAndAutoSaveToDisc(backupFileName string, backUpInterval ..
 	})
 }
 
-//把数据保存到硬盘上,仅支持key为string,int,int64等类型数据的缓存
+// 把数据保存到硬盘上,仅支持key为string,int,int64等类型数据的缓存
 func (r *Rule) SaveToDiscOnce() (err error) {
 	r.lockerForBackup.Lock()
 	defer r.lockerForBackup.Unlock()
@@ -171,8 +171,8 @@ func uint64ToByte(i uint64) []byte {
 	return b
 }
 
-//复制文件，目标文件所在目录不存在，则创建目录后再复制
-//Copy(`d:\test\hello.txt`,`c:\test\hello.txt`)
+// 复制文件，目标文件所在目录不存在，则创建目录后再复制
+// Copy(`d:\test\hello.txt`,`c:\test\hello.txt`)
 func copyFile(dstFileName, srcFileName string) (w int64, err error) {
 	//打开源文件
 	srcFile, err := os.Open(srcFileName)
